@@ -139,11 +139,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\CodePool.cs" />
-    <Compile Include="Models\Coder.cs" />
-    <Compile Include="Models\Organization.cs" />
-    <Compile Include="Models\SourceCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
