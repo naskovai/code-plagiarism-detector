@@ -7,33 +7,30 @@ using System.Web;
 
 namespace CopyCatsDetective.Models
 {
-    [Table("Organization")]
-    public class Organization
+    [Table("Category")]
+    public class Category
     {
         [Key]
         public int Id { get; set; }
+
+        public virtual Category ParentCategory { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public virtual Organization Organization { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+
+        public virtual ICollection<CodePool> CodePools { get; set; }
     }
 
-    [Table("Organization_Member")]
-    public class Organization_Member
+    public class CreateCategoryViewModel
     {
-        [Key]
-        public int Id { get; set; }
+        [Required]
+        public string Name { get; set; }
 
         [Required]
-        public int OrganizationId { get; set; }
-
-        [Required]
-        public virtual ApplicationUser Member { get; set; }
-
-        [Required]
-        public bool IsAdmin { get; set; }
+        public int ParentCategoryId { get; set; }
     }
 }

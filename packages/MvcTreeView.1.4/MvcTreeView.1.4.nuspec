@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MvcTreeView</id>
+    <version>1.4</version>
+    <authors>Matt Hidinger</authors>
+    <owners>Matt Hidinger</owners>
+    <licenseUrl>http://mvctreeview.codeplex.com/license</licenseUrl>
+    <projectUrl>http://mvctreeview.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>[MVC3 Only] This fluent MVC TreeView helper makes it easy to build and customize an HTML unordered-list tree from a recursive model.</description>
+    <copyright>Copyright 2011</copyright>
+    <tags>mvc treeview mvctreeview asp.net aspnetmvc</tags>
+  </metadata>
+</package>

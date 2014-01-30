@@ -8,134 +8,130 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CopyCatsDetective.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CopyCatsDetective.Controllers
 {
-    public class OrganizationsController : Controller
+    [Authorize]
+    public class CategoriesController : Controller
     {
-        private ApplicationDbContext db;
-        private UserManager<ApplicationUser> userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        public OrganizationsController()
-        {
-            db = new ApplicationDbContext();
-            userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-        }
-
-        // GET: /Organizations/
+        // GET: /Categories/
         public async Task<ActionResult> Index()
         {
-            return View(await db.Organizations.ToListAsync());
+            return View(await db.Categories.ToListAsync());
         }
 
-        // GET: /Organizations/Details/5
+        // GET: /Categories/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = await db.Organizations.FindAsync(id);
-            if (organization == null)
+            Category category = await db.Categories.FindAsync(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(organization);
+            return View(category);
         }
 
-        // GET: /Organizations/Create
-        [Authorize]
-        public ActionResult Create()
+        // GET: /Categories/Create
+        public async Task<ActionResult> Create(int? parentId)
         {
-            return View();
+            if (parentId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Category category = await db.Categories.FindAsync(parentId);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+
+            var createCategoryViewModel = new CreateCategoryViewModel()
+            {
+                ParentCategoryId = category.Id
+            };
+            return View(createCategoryViewModel);
         }
 
-        // POST: /Organizations/Create
+        // POST: /Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<ActionResult> Create([Bind(Include="Id,Name,Description")] Organization organization)
+        public async Task<ActionResult> Create([Bind(Include = "Name,ParentCategoryId")] CreateCategoryViewModel createCategoryViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Organizations.Add(organization);
-                await db.SaveChangesAsync();
-
-                Category rootCategory = new Category()
+                Category category = new Category()
                 {
-                    Name = "Root",
-                    Organization = organization
+                    Name = createCategoryViewModel.Name,
+                    ParentCategory = await db.Categories.FindAsync(createCategoryViewModel.ParentCategoryId)
                 };
-                db.Categories.Add(rootCategory);
+                db.Categories.Add(category);
                 await db.SaveChangesAsync();
-
                 return RedirectToAction("Index");
             }
 
-            return View(organization);
+            return View(createCategoryViewModel);
         }
 
-        // GET: /Organizations/Edit/5
-        [Authorize]
+        // GET: /Categories/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = await db.Organizations.FindAsync(id);
-            if (organization == null)
+            Category category = await db.Categories.FindAsync(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(organization);
+            return View(category);
         }
 
-        // POST: /Organizations/Edit/5
+        // POST: /Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<ActionResult> Edit([Bind(Include="Id,Name,Description")] Organization organization)
+        public async Task<ActionResult> Edit([Bind(Include="Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(organization).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(organization);
+            return View(category);
         }
 
-        // GET: /Organizations/Delete/5
-        [Authorize]
+        // GET: /Categories/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = await db.Organizations.FindAsync(id);
-            if (organization == null)
+            Category category = await db.Categories.FindAsync(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(organization);
+            return View(category);
         }
 
-        // POST: /Organizations/Delete/5
+        // POST: /Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Organization organization = await db.Organizations.FindAsync(id);
-            db.Organizations.Remove(organization);
+            Category category = await db.Categories.FindAsync(id);
+            db.Categories.Remove(category);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

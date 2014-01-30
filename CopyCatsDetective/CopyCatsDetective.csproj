@@ -260,6 +260,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\Services\CodePlagiarismDetector.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\TreeView.cs" />
     <Compile Include="Migrations\201401301129061_Init.cs" />
     <Compile Include="Migrations\201401301129061_Init.Designer.cs">
       <DependentUpon>201401301129061_Init.cs</DependentUpon>
@@ -280,8 +282,18 @@
     <Compile Include="Migrations\201401301411391_update.Designer.cs">
       <DependentUpon>201401301411391_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401302022288_Categories.cs" />
+    <Compile Include="Migrations\201401302022288_Categories.Designer.cs">
+      <DependentUpon>201401302022288_Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401302219060_Cotegories.cs" />
+    <Compile Include="Migrations\201401302219060_Cotegories.Designer.cs">
+      <DependentUpon>201401302219060_Cotegories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CodePool.cs" />
     <Compile Include="Models\CompareViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Organization.cs" />
@@ -339,6 +351,11 @@
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Organizations\Edit.cshtml" />
     <Content Include="Views\Organizations\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -358,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201401301411391_update.resx">
       <DependentUpon>201401301411391_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401302022288_Categories.resx">
+      <DependentUpon>201401302022288_Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401302219060_Cotegories.resx">
+      <DependentUpon>201401302219060_Cotegories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

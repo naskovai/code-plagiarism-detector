@@ -1,4 +1,5 @@
-﻿@model CopyCatsDetective.Models.Organization
+﻿@using CopyCatsDetective.Helpers
+@model CopyCatsDetective.Models.Organization
 
 @{
     ViewBag.Title = "Details";
@@ -32,3 +33,15 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@(Html.TreeView(Model.Categories)
+ .EmptyContent("No locations have been defined yet!")
+    .Children(m => m.Categories)
+    .HtmlAttributes(new { id = "tree" })
+    .ChildrenHtmlAttributes(new { @class = "subItem" })
+    .ItemText(m => m.Name)
+    .ItemTemplate(
+        @<text>
+            @Html.ActionLink(item.Name, "Details", "Categories", new { id = item.Id }, null)
+        </text>)
+)

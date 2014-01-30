@@ -22,5 +22,7 @@ namespace CopyCatsDetective.Models
         }
 
         public DbSet<Organization> Organizations { get; set; }
+
+        public System.Data.Entity.DbSet<CopyCatsDetective.Models.Category> Categories { get; set; }
     }
 }
