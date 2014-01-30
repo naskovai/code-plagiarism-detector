@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyCatsDetective", "CopyCatsDetective\CopyCatsDetective.csproj", "{7658CC6A-83E0-40BB-B1C5-E5B27A6DA898}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyCatsDetective", "CopyCatsDetective\CopyCatsDetective.csproj", "{98FE5EF8-C1AA-42C8-9D8E-9BDC74A9CA5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7658CC6A-83E0-40BB-B1C5-E5B27A6DA898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7658CC6A-83E0-40BB-B1C5-E5B27A6DA898}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7658CC6A-83E0-40BB-B1C5-E5B27A6DA898}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7658CC6A-83E0-40BB-B1C5-E5B27A6DA898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FE5EF8-C1AA-42C8-9D8E-9BDC74A9CA5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FE5EF8-C1AA-42C8-9D8E-9BDC74A9CA5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FE5EF8-C1AA-42C8-9D8E-9BDC74A9CA5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FE5EF8-C1AA-42C8-9D8E-9BDC74A9CA5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
