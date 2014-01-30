@@ -46,6 +46,7 @@ namespace CopyCatsDetective.Controllers
         }
 
         // GET: /Organizations/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -56,6 +57,7 @@ namespace CopyCatsDetective.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> Create([Bind(Include="Id,Name,Description")] Organization organization)
         {
             if (ModelState.IsValid)
@@ -69,6 +71,7 @@ namespace CopyCatsDetective.Controllers
         }
 
         // GET: /Organizations/Edit/5
+        [Authorize]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +91,7 @@ namespace CopyCatsDetective.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> Edit([Bind(Include="Id,Name,Description")] Organization organization)
         {
             if (ModelState.IsValid)
@@ -100,6 +104,7 @@ namespace CopyCatsDetective.Controllers
         }
 
         // GET: /Organizations/Delete/5
+        [Authorize]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -117,6 +122,7 @@ namespace CopyCatsDetective.Controllers
         // POST: /Organizations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Organization organization = await db.Organizations.FindAsync(id);
