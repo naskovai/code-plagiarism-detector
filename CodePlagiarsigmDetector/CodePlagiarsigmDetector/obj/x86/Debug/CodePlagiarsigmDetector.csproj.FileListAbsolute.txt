@@ -1,0 +1,5 @@
+C:\Users\rumen\Documents\GitHub\code-plagiarism-detector\CodePlagiarsigmDetector\CodePlagiarsigmDetector\bin\Debug\CodePlagiarsigmDetector.exe
+C:\Users\rumen\Documents\GitHub\code-plagiarism-detector\CodePlagiarsigmDetector\CodePlagiarsigmDetector\bin\Debug\CodePlagiarsigmDetector.pdb
+C:\Users\rumen\Documents\GitHub\code-plagiarism-detector\CodePlagiarsigmDetector\CodePlagiarsigmDetector\obj\x86\Debug\CodePlagiarsigmDetector.csprojResolveAssemblyReference.cache
+C:\Users\rumen\Documents\GitHub\code-plagiarism-detector\CodePlagiarsigmDetector\CodePlagiarsigmDetector\obj\x86\Debug\CodePlagiarsigmDetector.exe
+C:\Users\rumen\Documents\GitHub\code-plagiarism-detector\CodePlagiarsigmDetector\CodePlagiarsigmDetector\obj\x86\Debug\CodePlagiarsigmDetector.pdb

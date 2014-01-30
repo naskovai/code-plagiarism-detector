@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CopyCatsDetective.Controllers.Services.CodeSimilarityMeasurer;
+using Roslyn.Compilers.CSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,13 +34,35 @@ namespace CopyCatsDetective.Controllers.Services
 
     public class CodePlagiarismDetector
     {
-        public async Task<CodePlagiarismDetectionResult> Compare(string firstSourceCode, string secondSourceCode)
+        private AstSimLcs astSimLcs;
+
+        public CodePlagiarismDetector()
+        {
+            astSimLcs = new AstSimLcs();
+        }
+
+        public async Task<CodePlagiarismDetectionResult> Compare(Languages language, string firstSourceCode, string secondSourceCode)
         {
             var result = await Task.Factory.StartNew(() =>
             {
-                return new CodePlagiarismDetectionResult(Languages.CSharp, firstSourceCode, secondSourceCode, true, 0.96);
+                switch(language)
+                {
+                    case Languages.CSharp:
+                        return CompareCShapr(firstSourceCode, secondSourceCode);
+                    default:
+                        return null;
+                }
             });
             return result;
+        }
+
+        private CodePlagiarismDetectionResult CompareCShapr(string firstSourceCode, string secondSourceCode)
+        {
+            SyntaxNode firstRoot = SyntaxTree.ParseText(firstSourceCode).GetRoot();
+            SyntaxNode secondRoot = SyntaxTree.ParseText(secondSourceCode).GetRoot();
+            double result = astSimLcs.run(new Node(firstRoot), new Node(secondRoot));
+            result = Math.Min(result, 1);
+            return new CodePlagiarismDetectionResult(Languages.CSharp, firstSourceCode, secondSourceCode, result >= 0.7, result);
         }
     }
 }
