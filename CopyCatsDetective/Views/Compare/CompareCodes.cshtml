@@ -5,7 +5,7 @@
 <div style="background: #a7b5a7; max-width:200px; margin-top: 20px; margin-left: 300px;">
     <div>
         <p>Cheat probability:</p>
-        <p style="float: right; margin-left: -500px; margin-top: -30px;">@(Model.FirstOrDefault().Similarity * 100) %</p>
+        <p style="float: right; margin-left: -500px; margin-top: -30px;">@(String.Format("{0:F2}", Model.FirstOrDefault().Similarity * 100)) %</p>
     </div>
    
     <div>
