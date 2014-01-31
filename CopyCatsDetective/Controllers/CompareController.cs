@@ -24,7 +24,7 @@ namespace CopyCatsDetective.Controllers
             string firstSourceCode = Request.Form["FirstSourceCode"];
             string secondSourceCode = Request.Form["SecondSourceCode"];
             CodePlagiarismDetector detector = new CodePlagiarismDetector();
-            var result =  await detector.Compare(firstSourceCode, secondSourceCode);
+            var result =  await detector.Compare(Languages.CSharp, firstSourceCode, secondSourceCode);
             IEnumerable<CodePlagiarismDetectionResult> results = new[] { result };
             return View(results);
         }
