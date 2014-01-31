@@ -1,0 +1,34 @@
+﻿<section style="margin-top: 20px;">
+    <select style="margin-left: 450px;">
+        <option>--- Choose Language ---</option>
+        <option>C#</option>
+        <option>Visual Basic</option>
+    </select>
+
+    <p style="margin-left: 60px; margin-top: 20px;">Copy & Paste the source code extracts in the respective box to begin code comparison</p>
+
+    <section style="margin-top: 20px; margin-left: 50px;">
+        <div>
+            <form method="post" action="@Url.Action("CompareCodes", "Compare")">
+                <div style="float: left">
+                    <label>Source Code No 1</label>
+                    <textarea name="FirstSourceCode" style="display: block; min-width: 400px; min-height: 400px;"></textarea>
+                </div>
+
+                <div style="float: left; margin-left: 40px; margin-left: 300px;">
+                    <label>Source Code No 2</label>
+                    <textarea name="SecondSourceCode" style="display: block; min-width: 400px; min-height: 400px;"></textarea>
+                </div>
+
+                <div style="float: left; margin-left: -380px; margin-top: 210px;"> VS </div>
+
+                <label style="margin-left: 60px; margin-top: 30px;">See comparison results by clicking</label>
+                <input type="submit" id="CompareButton" name="CompareCodes" value="Compare" style="margin-left: 30px;" />
+            </form>
+        </div>
+    </section>
+
+    <section style="margin-left: 291px;">
+       
+    </section>
+</section>
