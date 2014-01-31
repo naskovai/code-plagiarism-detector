@@ -15,6 +15,8 @@ namespace CopyCatsDetective.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public AccountController()
             : this(new ApplicationDbContext())
         {
@@ -72,8 +74,13 @@ namespace CopyCatsDetective.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(int? organizationId = null)
         {
+            ViewBag.OrganizationId = organizationId;
+            if (ViewBag.OrganizationId != null)
+            {
+                ViewBag.IsStudent = true;
+            }
             return View();
         }
 
@@ -90,7 +97,24 @@ namespace CopyCatsDetective.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await UserManager.AddToRoleAsync(user.Id, Roles.Member);
+                    if (model.IsStudent.HasValue && model.IsStudent.Value)
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, Roles.Student);
+                        var student = new StudentProfile()
+                        {
+                            CheaterLevel = 0,
+                            CheaterPoints = 0,
+                            CheaterPointsUpdated = DateTime.Now,
+                            UserId = user.Id,
+                            Organization = await db.Organizations.FindAsync(model.OrganizationId)
+                        };
+                        db.StudentProfiles.Add(student);
+                        await db.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, Roles.Member);
+                    }
 
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");

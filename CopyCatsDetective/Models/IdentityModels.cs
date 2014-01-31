@@ -7,6 +7,7 @@ namespace CopyCatsDetective.Models
     {
         public const string Admin = "admin";
         public const string Member = "member";
+        public const string Student = "student";
     }
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -23,6 +24,10 @@ namespace CopyCatsDetective.Models
 
         public DbSet<Organization> Organizations { get; set; }
 
-        public System.Data.Entity.DbSet<CopyCatsDetective.Models.Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<CodePool> CodePools { get; set; }
+
+        public DbSet<StudentProfile> StudentProfiles { get; set; }
     }
 }

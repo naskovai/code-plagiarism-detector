@@ -34,6 +34,8 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
+<h3>Categories</h3>
+
 @(Html.TreeView(Model.Categories)
  .EmptyContent("No locations have been defined yet!")
     .Children(m => m.Categories)
@@ -45,3 +47,9 @@
             @Html.ActionLink(item.Name, "Details", "Categories", new { id = item.Id }, null)
         </text>)
 )
+
+<h3>Students</h3>
+
+<p>
+    @Html.ActionLink("Register", "Register", "Account", routeValues: new { organizationId = Model.Id }, htmlAttributes: new { id = "registerLink" })
+</p>

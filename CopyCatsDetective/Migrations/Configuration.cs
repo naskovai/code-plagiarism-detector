@@ -27,6 +27,8 @@ namespace CopyCatsDetective.Migrations
 
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
+            EnsureRolesInitialized(RoleManager);
+
             string name = "admin";
             string password = "123456";
 
@@ -53,6 +55,11 @@ namespace CopyCatsDetective.Migrations
             if (!roleManager.RoleExists(Roles.Member))
             {
                 roleManager.Create(new IdentityRole(Roles.Member));
+            }
+
+            if (!roleManager.RoleExists(Roles.Student))
+            {
+                roleManager.Create(new IdentityRole(Roles.Student));
             }
         }
     }

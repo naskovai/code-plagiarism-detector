@@ -261,6 +261,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CodePoolsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\Services\CodePlagiarismDetector.cs" />
@@ -286,9 +287,9 @@
     <Compile Include="Migrations\201401302022288_Categories.Designer.cs">
       <DependentUpon>201401302022288_Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401302219060_Cotegories.cs" />
-    <Compile Include="Migrations\201401302219060_Cotegories.Designer.cs">
-      <DependentUpon>201401302219060_Cotegories.cs</DependentUpon>
+    <Compile Include="Migrations\201401310040380_loss.cs" />
+    <Compile Include="Migrations\201401310040380_loss.Designer.cs">
+      <DependentUpon>201401310040380_loss.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -297,6 +298,7 @@
     <Compile Include="Models\CompareViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\StudentProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -356,6 +358,11 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\CodePools\Create.cshtml" />
+    <Content Include="Views\CodePools\Delete.cshtml" />
+    <Content Include="Views\CodePools\Details.cshtml" />
+    <Content Include="Views\CodePools\Edit.cshtml" />
+    <Content Include="Views\CodePools\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -379,8 +386,8 @@
     <EmbeddedResource Include="Migrations\201401302022288_Categories.resx">
       <DependentUpon>201401302022288_Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401302219060_Cotegories.resx">
-      <DependentUpon>201401302219060_Cotegories.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401310040380_loss.resx">
+      <DependentUpon>201401310040380_loss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
