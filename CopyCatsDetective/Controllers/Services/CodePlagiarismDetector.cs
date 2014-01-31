@@ -13,6 +13,13 @@ namespace CopyCatsDetective.Controllers.Services
         CSharp
     }
 
+    public enum AlertLevel
+    {
+        Low = 0,
+        Medium = 1,
+        High = 2
+    }
+
     public class CodePlagiarismDetectionResult
     {
         public Languages Language { get; private set; }
@@ -20,6 +27,39 @@ namespace CopyCatsDetective.Controllers.Services
         public string SecondSourceCode { get; private set; }
         public bool AreEqual { get; private set; }
         public double Similarity { get; private set; }
+        public AlertLevel AlertLevel
+        {
+            get
+            {
+                if (Similarity < 0.45)
+                {
+                    return AlertLevel.Low;
+                }
+                else if (Similarity >= 0.45 && Similarity < 0.8)
+                {
+                    return AlertLevel.Medium;
+                }
+                return AlertLevel.High;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                switch (AlertLevel)
+                {
+                    case AlertLevel.Low:
+                        return "Няма основание за плагиатство";
+                    case AlertLevel.Medium:
+                        return "Внимание! Необходимо е внимателно преглеждане на кода. Голяма вероятност за плагиатство!";
+                    case AlertLevel.High:
+                        return "Кодът е плагиатстван!";
+                    default:
+                        return null;
+                }
+            }
+        }
 
         public CodePlagiarismDetectionResult(Languages language, string firstSourceCode, string secondSourceCode,
             bool areEqual, double similarity)

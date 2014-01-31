@@ -19,16 +19,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Compare", "Index", "Compare", null, new { @class = "navbar-brand" })
+               
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Organizations", "Index", "Organizations")</li>
-                    @*<li>@Html.ActionLink("Categories", "Index", "Categories")</li>*@
-                </ul>
-                @Html.Partial("_LoginPartial")
+                <label style="margin-left: 350px; margin-top: 5px; font-size: 20pt;">CopyCats Detective</label>
+                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

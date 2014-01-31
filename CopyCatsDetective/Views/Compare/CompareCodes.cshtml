@@ -10,13 +10,13 @@
    
     <div>
         <p>Alert level: </p>
-        <p style="float: right; margin-top: -30px;">High</p>
+        <p style="float: right; margin-top: -30px;">@Model.FirstOrDefault().AlertLevel.ToString()</p>
     </div>
     
 </div>
 
 <div style="margin-top: 20px; margin-left: 300px;">
     <label>Brief Description</label>
-    <textarea style="display: block; min-width: 200px; min-height:200px;"></textarea>
-    <input type="button" value="Compare next codes"  style="margin-top: 20px;"/>
+    <textarea style="display: block; min-width: 200px; min-height:200px;">@Model.FirstOrDefault().Description</textarea>
+    @Html.ActionLink("Compare next codes", "Index", "Compare");
 </div>
