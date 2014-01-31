@@ -31,11 +31,11 @@ namespace CopyCatsDetective.Controllers.Services
         {
             get
             {
-                if (Similarity < 0.45)
+                if (Similarity < 0.6)
                 {
                     return AlertLevel.Low;
                 }
-                else if (Similarity >= 0.45 && Similarity < 0.8)
+                else if (Similarity >= 0.6 && Similarity < 0.8)
                 {
                     return AlertLevel.Medium;
                 }
@@ -102,7 +102,7 @@ namespace CopyCatsDetective.Controllers.Services
             SyntaxNode secondRoot = SyntaxTree.ParseText(secondSourceCode).GetRoot();
             double result = astSimLcs.run(new Node(firstRoot), new Node(secondRoot));
             result = Math.Min(result, 1);
-            return new CodePlagiarismDetectionResult(Languages.CSharp, firstSourceCode, secondSourceCode, result >= 0.7, result);
+            return new CodePlagiarismDetectionResult(Languages.CSharp, firstSourceCode, secondSourceCode, result >= 0.8, result);
         }
     }
 }
