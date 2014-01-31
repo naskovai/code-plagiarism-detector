@@ -262,6 +262,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CodePoolsController.cs" />
+    <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\Services\CodePlagiarismDetector.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -363,10 +365,11 @@
     <Content Include="Views\CodePools\Details.cshtml" />
     <Content Include="Views\CodePools\Edit.cshtml" />
     <Content Include="Views\CodePools\Index.cshtml" />
+    <Content Include="Views\Compare\Index.cshtml" />
+    <Content Include="Views\Compare\CompareCodes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Compare\" />
     <Folder Include="Views\SimilarityMeasure\" />
   </ItemGroup>
   <ItemGroup>
